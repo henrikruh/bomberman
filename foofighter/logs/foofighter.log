@@ -1,142 +1,203 @@
-2019-02-19 17:36:26,771 [foofighter_wrapper] INFO: Import agent code from "agent_code/foofighter/callbacks.py"
-2019-02-19 17:36:27,018 [foofighter_wrapper] INFO: Initialize agent code
-2019-02-19 17:36:27,319 [foofighter_wrapper] INFO: STARTING ROUND #1
-2019-02-19 17:36:27,421 [foofighter_wrapper] INFO: STARTING STEP 1
-2019-02-19 17:36:27,421 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,451 [foofighter_wrapper] INFO: Chose action DOWN after 0.030s of thinking
-2019-02-19 17:36:27,523 [foofighter_wrapper] INFO: STARTING STEP 2
-2019-02-19 17:36:27,523 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,555 [foofighter_wrapper] INFO: Chose action DOWN after 0.032s of thinking
-2019-02-19 17:36:27,625 [foofighter_wrapper] INFO: STARTING STEP 3
-2019-02-19 17:36:27,625 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,654 [foofighter_wrapper] INFO: Chose action DOWN after 0.030s of thinking
-2019-02-19 17:36:27,726 [foofighter_wrapper] INFO: STARTING STEP 4
-2019-02-19 17:36:27,726 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,758 [foofighter_wrapper] INFO: Chose action DOWN after 0.032s of thinking
-2019-02-19 17:36:27,828 [foofighter_wrapper] INFO: STARTING STEP 5
-2019-02-19 17:36:27,828 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,852 [foofighter_wrapper] INFO: Chose action DOWN after 0.024s of thinking
-2019-02-19 17:36:27,933 [foofighter_wrapper] INFO: STARTING STEP 6
-2019-02-19 17:36:27,933 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:27,964 [foofighter_wrapper] INFO: Chose action DOWN after 0.031s of thinking
-2019-02-19 17:36:28,034 [foofighter_wrapper] INFO: STARTING STEP 7
-2019-02-19 17:36:28,034 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,052 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:28,136 [foofighter_wrapper] INFO: STARTING STEP 8
-2019-02-19 17:36:28,136 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,156 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:28,238 [foofighter_wrapper] INFO: STARTING STEP 9
-2019-02-19 17:36:28,238 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,256 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:28,340 [foofighter_wrapper] INFO: STARTING STEP 10
-2019-02-19 17:36:28,340 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,360 [foofighter_wrapper] INFO: Chose action DOWN after 0.020s of thinking
-2019-02-19 17:36:28,442 [foofighter_wrapper] INFO: STARTING STEP 11
-2019-02-19 17:36:28,442 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,463 [foofighter_wrapper] INFO: Chose action DOWN after 0.021s of thinking
-2019-02-19 17:36:28,550 [foofighter_wrapper] INFO: STARTING STEP 12
-2019-02-19 17:36:28,551 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,567 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:28,652 [foofighter_wrapper] INFO: STARTING STEP 13
-2019-02-19 17:36:28,652 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,674 [foofighter_wrapper] INFO: Chose action DOWN after 0.022s of thinking
-2019-02-19 17:36:28,754 [foofighter_wrapper] INFO: STARTING STEP 14
-2019-02-19 17:36:28,754 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,772 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:28,856 [foofighter_wrapper] INFO: STARTING STEP 15
-2019-02-19 17:36:28,856 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,880 [foofighter_wrapper] INFO: Chose action DOWN after 0.024s of thinking
-2019-02-19 17:36:28,958 [foofighter_wrapper] INFO: STARTING STEP 16
-2019-02-19 17:36:28,958 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:28,977 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:29,060 [foofighter_wrapper] INFO: STARTING STEP 17
-2019-02-19 17:36:29,060 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,080 [foofighter_wrapper] INFO: Chose action DOWN after 0.020s of thinking
-2019-02-19 17:36:29,163 [foofighter_wrapper] INFO: STARTING STEP 18
-2019-02-19 17:36:29,163 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,184 [foofighter_wrapper] INFO: Chose action DOWN after 0.021s of thinking
-2019-02-19 17:36:29,263 [foofighter_wrapper] INFO: STARTING STEP 19
-2019-02-19 17:36:29,263 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,280 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:29,365 [foofighter_wrapper] INFO: STARTING STEP 20
-2019-02-19 17:36:29,365 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,385 [foofighter_wrapper] INFO: Chose action DOWN after 0.020s of thinking
-2019-02-19 17:36:29,467 [foofighter_wrapper] INFO: STARTING STEP 21
-2019-02-19 17:36:29,467 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,484 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:29,569 [foofighter_wrapper] INFO: STARTING STEP 22
-2019-02-19 17:36:29,569 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,587 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:29,672 [foofighter_wrapper] INFO: STARTING STEP 23
-2019-02-19 17:36:29,672 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,690 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:29,774 [foofighter_wrapper] INFO: STARTING STEP 24
-2019-02-19 17:36:29,774 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,797 [foofighter_wrapper] INFO: Chose action DOWN after 0.022s of thinking
-2019-02-19 17:36:29,876 [foofighter_wrapper] INFO: STARTING STEP 25
-2019-02-19 17:36:29,876 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:29,895 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:29,978 [foofighter_wrapper] INFO: STARTING STEP 26
-2019-02-19 17:36:29,978 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,001 [foofighter_wrapper] INFO: Chose action DOWN after 0.023s of thinking
-2019-02-19 17:36:30,080 [foofighter_wrapper] INFO: STARTING STEP 27
-2019-02-19 17:36:30,081 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,100 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:30,182 [foofighter_wrapper] INFO: STARTING STEP 28
-2019-02-19 17:36:30,183 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,200 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:30,284 [foofighter_wrapper] INFO: STARTING STEP 29
-2019-02-19 17:36:30,284 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,302 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:30,386 [foofighter_wrapper] INFO: STARTING STEP 30
-2019-02-19 17:36:30,386 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,404 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:30,488 [foofighter_wrapper] INFO: STARTING STEP 31
-2019-02-19 17:36:30,488 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,506 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:30,593 [foofighter_wrapper] INFO: STARTING STEP 32
-2019-02-19 17:36:30,594 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,613 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:30,695 [foofighter_wrapper] INFO: STARTING STEP 33
-2019-02-19 17:36:30,695 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,714 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:30,797 [foofighter_wrapper] INFO: STARTING STEP 34
-2019-02-19 17:36:30,797 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,816 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:30,898 [foofighter_wrapper] INFO: STARTING STEP 35
-2019-02-19 17:36:30,898 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:30,916 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:31,000 [foofighter_wrapper] INFO: STARTING STEP 36
-2019-02-19 17:36:31,000 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,019 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:31,102 [foofighter_wrapper] INFO: STARTING STEP 37
-2019-02-19 17:36:31,102 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,121 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:31,204 [foofighter_wrapper] INFO: STARTING STEP 38
-2019-02-19 17:36:31,204 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,223 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:31,306 [foofighter_wrapper] INFO: STARTING STEP 39
-2019-02-19 17:36:31,306 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,325 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:31,408 [foofighter_wrapper] INFO: STARTING STEP 40
-2019-02-19 17:36:31,408 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,426 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:31,510 [foofighter_wrapper] INFO: STARTING STEP 41
-2019-02-19 17:36:31,510 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,527 [foofighter_wrapper] INFO: Chose action DOWN after 0.017s of thinking
-2019-02-19 17:36:31,612 [foofighter_wrapper] INFO: STARTING STEP 42
-2019-02-19 17:36:31,612 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,631 [foofighter_wrapper] INFO: Chose action DOWN after 0.019s of thinking
-2019-02-19 17:36:31,714 [foofighter_wrapper] INFO: STARTING STEP 43
-2019-02-19 17:36:31,714 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,735 [foofighter_wrapper] INFO: Chose action DOWN after 0.021s of thinking
-2019-02-19 17:36:31,816 [foofighter_wrapper] INFO: STARTING STEP 44
-2019-02-19 17:36:31,816 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,834 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:31,918 [foofighter_wrapper] INFO: STARTING STEP 45
-2019-02-19 17:36:31,919 [foofighter_code] INFO: Picking action according to rule set
-2019-02-19 17:36:31,936 [foofighter_wrapper] INFO: Chose action DOWN after 0.018s of thinking
-2019-02-19 17:36:31,941 [foofighter_wrapper] INFO: Received exit message for round
-2019-02-19 17:36:31,941 [foofighter_wrapper] INFO: Round #1 finished
-2019-02-19 17:36:46,510 [foofighter_wrapper] INFO: Received global exit message
-2019-02-19 17:36:46,510 [foofighter_wrapper] INFO: SHUT DOWN
+2019-02-21 01:19:56,056 [foofighter_wrapper] INFO: Import agent code from "agent_code/foofighter/callbacks.py"
+2019-02-21 01:19:56,316 [foofighter_wrapper] INFO: Initialize agent code
+2019-02-21 01:19:56,331 [foofighter_wrapper] INFO: STARTING ROUND #1
+2019-02-21 01:19:56,432 [foofighter_wrapper] INFO: STARTING STEP 1
+2019-02-21 01:19:56,432 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,432 [foofighter_code] DEBUG: Encountered 0 game event(s)
+2019-02-21 01:19:56,433 [foofighter_wrapper] ERROR: Error in callback function: 'types.SimpleNamespace' object has no attribute 'next_action'
+Traceback (most recent call last):
+  File "C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Machine Learning\bomberman\bomberman_rl\agents.py", line 95, in run
+    self.code.reward_update(self.fake_self)
+  File "C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Machine Learning\bomberman\bomberman_rl\agent_code\foofighter\callbacks.py", line 196, in reward_update
+    action = torch.tensor([[float(np.where([self.next_action == i for i in self.actions])[0][0])]])
+  File "C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Machine Learning\bomberman\bomberman_rl\agent_code\foofighter\callbacks.py", line 196, in <listcomp>
+    action = torch.tensor([[float(np.where([self.next_action == i for i in self.actions])[0][0])]])
+AttributeError: 'types.SimpleNamespace' object has no attribute 'next_action'
+2019-02-21 01:19:56,433 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,440 [foofighter_wrapper] INFO: Chose action DOWN after 0.007s of thinking
+2019-02-21 01:19:56,533 [foofighter_wrapper] INFO: STARTING STEP 2
+2019-02-21 01:19:56,533 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,533 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:56,547 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,550 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,554 [foofighter_wrapper] INFO: Chose action UP after 0.003s of thinking
+2019-02-21 01:19:56,639 [foofighter_wrapper] INFO: STARTING STEP 3
+2019-02-21 01:19:56,639 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,639 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:56,651 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,656 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,658 [foofighter_wrapper] INFO: Chose action DOWN after 0.002s of thinking
+2019-02-21 01:19:56,741 [foofighter_wrapper] INFO: STARTING STEP 4
+2019-02-21 01:19:56,741 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,741 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:56,754 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,758 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,762 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:56,841 [foofighter_wrapper] INFO: STARTING STEP 5
+2019-02-21 01:19:56,841 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,842 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:56,854 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,859 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,862 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:56,951 [foofighter_wrapper] INFO: STARTING STEP 6
+2019-02-21 01:19:56,952 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:56,952 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:56,967 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,970 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:56,974 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,050 [foofighter_wrapper] INFO: STARTING STEP 7
+2019-02-21 01:19:57,050 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,050 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,065 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,069 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,072 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,151 [foofighter_wrapper] INFO: STARTING STEP 8
+2019-02-21 01:19:57,151 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,151 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,166 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,171 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,174 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,253 [foofighter_wrapper] INFO: STARTING STEP 9
+2019-02-21 01:19:57,253 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,253 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,270 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,275 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,278 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,354 [foofighter_wrapper] INFO: STARTING STEP 10
+2019-02-21 01:19:57,354 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,354 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,371 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,375 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,378 [foofighter_wrapper] INFO: Chose action DOWN after 0.002s of thinking
+2019-02-21 01:19:57,455 [foofighter_wrapper] INFO: STARTING STEP 11
+2019-02-21 01:19:57,456 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,456 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,474 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,479 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,482 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,557 [foofighter_wrapper] INFO: STARTING STEP 12
+2019-02-21 01:19:57,557 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,557 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,574 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,581 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,584 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,661 [foofighter_wrapper] INFO: STARTING STEP 13
+2019-02-21 01:19:57,661 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,661 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,682 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,687 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,691 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:57,762 [foofighter_wrapper] INFO: STARTING STEP 14
+2019-02-21 01:19:57,762 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,762 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,785 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,789 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,793 [foofighter_wrapper] INFO: Chose action RIGHT after 0.004s of thinking
+2019-02-21 01:19:57,863 [foofighter_wrapper] INFO: STARTING STEP 15
+2019-02-21 01:19:57,863 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,863 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:57,886 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,896 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:57,900 [foofighter_wrapper] INFO: Chose action DOWN after 0.004s of thinking
+2019-02-21 01:19:57,965 [foofighter_wrapper] INFO: STARTING STEP 16
+2019-02-21 01:19:57,965 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:57,965 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,018 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,025 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,033 [foofighter_wrapper] INFO: Chose action DOWN after 0.008s of thinking
+2019-02-21 01:19:58,066 [foofighter_wrapper] INFO: STARTING STEP 17
+2019-02-21 01:19:58,066 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,066 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,096 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,100 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,104 [foofighter_wrapper] INFO: Chose action RIGHT after 0.004s of thinking
+2019-02-21 01:19:58,167 [foofighter_wrapper] INFO: STARTING STEP 18
+2019-02-21 01:19:58,167 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,167 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,194 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,199 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,202 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:58,268 [foofighter_wrapper] INFO: STARTING STEP 19
+2019-02-21 01:19:58,269 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,269 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,296 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,301 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,306 [foofighter_wrapper] INFO: Chose action UP after 0.004s of thinking
+2019-02-21 01:19:58,381 [foofighter_wrapper] INFO: STARTING STEP 20
+2019-02-21 01:19:58,381 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,381 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,410 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,414 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,418 [foofighter_wrapper] INFO: Chose action DOWN after 0.004s of thinking
+2019-02-21 01:19:58,471 [foofighter_wrapper] INFO: STARTING STEP 21
+2019-02-21 01:19:58,471 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,471 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,499 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,503 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,506 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:58,573 [foofighter_wrapper] INFO: STARTING STEP 22
+2019-02-21 01:19:58,573 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,573 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,603 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,608 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,611 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:58,675 [foofighter_wrapper] INFO: STARTING STEP 23
+2019-02-21 01:19:58,675 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,675 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,706 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,711 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,714 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:58,778 [foofighter_wrapper] INFO: STARTING STEP 24
+2019-02-21 01:19:58,779 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,779 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,809 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,814 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,818 [foofighter_wrapper] INFO: Chose action LEFT after 0.004s of thinking
+2019-02-21 01:19:58,880 [foofighter_wrapper] INFO: STARTING STEP 25
+2019-02-21 01:19:58,880 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,880 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:58,913 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,917 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:58,921 [foofighter_wrapper] INFO: Chose action UP after 0.004s of thinking
+2019-02-21 01:19:58,981 [foofighter_wrapper] INFO: STARTING STEP 26
+2019-02-21 01:19:58,981 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:58,981 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,015 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,019 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,023 [foofighter_wrapper] INFO: Chose action BOMB after 0.003s of thinking
+2019-02-21 01:19:59,082 [foofighter_wrapper] INFO: STARTING STEP 27
+2019-02-21 01:19:59,082 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:59,082 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,116 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,122 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,126 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:59,182 [foofighter_wrapper] INFO: STARTING STEP 28
+2019-02-21 01:19:59,183 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:59,183 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,218 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,223 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,226 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:59,284 [foofighter_wrapper] INFO: STARTING STEP 29
+2019-02-21 01:19:59,284 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:59,285 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,321 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,332 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,335 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:59,386 [foofighter_wrapper] INFO: STARTING STEP 30
+2019-02-21 01:19:59,386 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:59,386 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,423 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,428 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,431 [foofighter_wrapper] INFO: Chose action DOWN after 0.003s of thinking
+2019-02-21 01:19:59,490 [foofighter_wrapper] INFO: STARTING STEP 31
+2019-02-21 01:19:59,490 [foofighter_wrapper] INFO: Process intermediate rewards
+2019-02-21 01:19:59,490 [foofighter_code] DEBUG: Encountered 1 game event(s)
+2019-02-21 01:19:59,528 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,533 [foofighter_code] INFO: Picking action according to rule set
+2019-02-21 01:19:59,537 [foofighter_wrapper] INFO: Chose action WAIT after 0.004s of thinking
+2019-02-21 01:19:59,542 [foofighter_wrapper] INFO: Received exit message for round
+2019-02-21 01:19:59,543 [foofighter_wrapper] INFO: Finalize agent's training
+2019-02-21 01:19:59,646 [foofighter_code] DEBUG: Encountered 4 game event(s) in final step
+2019-02-21 01:19:59,661 [foofighter_wrapper] INFO: Round #1 finished
+2019-02-21 01:20:05,440 [foofighter_wrapper] INFO: Received global exit message
+2019-02-21 01:20:05,440 [foofighter_wrapper] INFO: SHUT DOWN

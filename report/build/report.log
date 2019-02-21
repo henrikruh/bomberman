@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.7)  20 FEB 2019 12:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.7)  21 FEB 2019 11:14
 entering extended mode
 **./report.tex
 (report.tex
@@ -2714,38 +2714,38 @@ been already used, duplicate ignored
 l.134 \newpage
                [1
 
-] (sec1_introduction_1.tex
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 7.
+] (notes.tex
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
 
 ("C:\Users\Henrik\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 7.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 6.
 )
 [2] [3
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
 
 ("C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Machine Learning\bom
 berman\report\build\report.aux"
 ("C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Machine Learning\bom
 berman\report\build\titlepage.aux"))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 520833BB9DB9B8EF77B8F39D98C5AEC8;98.
+(rerunfilecheck)             Checksum: A9CE7841C191192AA847DB857D54F3F4;91.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50927 strings out of 493305
- 1141166 string characters out of 3129368
+ 50926 strings out of 493305
+ 1141072 string characters out of 3129368
  257728962 words of memory out of 259000000
- 53624 multiletter control sequences out of 15000+200000
+ 53623 multiletter control sequences out of 15000+200000
  573689 words of font info for 60 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  62i,11n,96p,10379b,2283s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2758,9 +2758,9 @@ lic/lm/lmr12.pfb><C:/Users/Henrik/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 ype1/public/lm/lmri12.pfb><C:/Users/Henrik/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/lm/lmsy10.pfb>
 Output written on "C:\Users\Henrik\Nextcloud\Uni\Informatik\Fundamentals of Mac
-hine Learning\bomberman\report\build\report.pdf" (4 pages, 107369 bytes).
+hine Learning\bomberman\report\build\report.pdf" (4 pages, 107104 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 59 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 500000)
  29 words of extra memory for PDF output out of 10000 (max. 10000000)
 
