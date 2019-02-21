@@ -1,0 +1,189 @@
+\documentclass[12pt,twoside]{report}
+%pdflatex --enable-write18 --extra-mem-bot=10000000 --synctex=1 
+\usepackage[a4paper,width=165mm,top=20mm,bottom=20mm,bindingoffset=6mm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[USenglish,ngerman,UKenglish]{babel}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{fon}
+\usepackage{caption}
+\usepackage{makeidx}
+\usepackage{setspace}
+\usepackage[nottoc,numbib,notlof]{tocbibind}
+\usepackage[nodayofweek,level]{datetime}
+\usepackage{placeins}
+\usepackage{layouts}
+\usepackage{media9}
+\usepackage[percent]{overpic}
+\usepackage{pict2e}
+\usepackage{bm}
+
+\usepackage[babel,german=guillemets]{csquotes}
+\usepackage[style=authoryear, sorting=none,natbib=true]{biblatex}
+\providecommand{\sorthelp}[1]{}
+
+%Angabe der BibTex-Datei
+\bibliography{bomberman.bib}
+
+
+\usepackage{titlesec}
+%\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{separate-uncertainty}
+\usepackage{graphicx}
+\usepackage{floatrow}
+\usepackage{subcaption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{amsfonts}
+\usepackage{lmodern}
+\usepackage{gensymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\usepackage{booktabs} 
+\usepackage{longtable}     % helps with long table options
+\usepackage{adjustbox}
+\usepackage{rotating}
+
+%labeling list
+\usepackage{blindtext}
+\usepackage{scrextend}
+
+
+%hyperref-Package: auch für \nameref
+\usepackage{hyperref}
+%prettyref - Package
+\usepackage{prettyref}
+%Bilder-Ordner
+\graphicspath{{gfx/}}
+%pgf externalize
+%\usepgfplotslibrary{external}
+%\tikzexternalize
+
+%header
+\renewcommand{\sectionmark}[1]{\markboth{\thesection ~#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}{}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\rightmark}
+\fancyhead[RE,LO]{\leftmark}
+\cfoot{\thepage}
+
+%Nummerierung bis subsubsection
+%\setcounter{secnumdepth}{4}
+
+% Indexerstellung und Festlegung der Überschrift des Inhaltverzeichnisses
+\makeindex
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\contentsname}{Table of Contents}
+
+% column vector
+\newcommand*\colvec[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\DeclareUnicodeCharacter{2212}{-}
+
+
+% table commands
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\newcommand{\tcs}[1]{\setlength{\tabcolsep}{#1}}
+\setlength\heavyrulewidth{0.2ex}
+\setlength\lightrulewidth{0.15ex}
+\setlength{\tabcolsep}{5pt}
+
+\begin{document} %###################################################
+
+% Titelseite 
+\include{titlepage}
+\onehalfspacing
+
+% Abstract auf selber Seite
+\def\abstract{
+   \vfil
+\begin{center}%
+{\bfseries \abstractname\vspace{-.5em}}%
+\end{center}
+\quotation
+}
+
+\def\endabstract{\par
+\endquotation
+}
+
+\newpage
+\begin{abstract}
+Abstract.
+\end{abstract}
+
+% Seitennummerierung startet bei Abstract
+\setcounter{page}{1}
+\selectlanguage{USenglish}
+
+% Inhaltsverzeichnis
+%\singlespacing
+%\newpage
+%\tableofcontents
+ 
+%%%%%%% HAUPTTEIL %%%%%%%%%%%%
+\onehalfspacing
+
+% einzelne Kapitel
+
+\newpage
+\input{sec1_introduction_1} 
+
+\newpage
+%\input{sec2_theory_1} 
+
+\newpage
+%\input{sec3_methods_1} 
+
+\newpage
+%\input{sec4_results_1} 
+
+\newpage
+%\input{sec5_discussion_1} 
+
+\newpage
+%\input{sec6_outlook_1} 
+
+
+%header
+\newpage
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{Acknowledgements}
+%\input{Acknowledgements}
+
+% Literaturverzeichnis
+\singlespacing
+%\newpage
+%header
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{References}
+%\addcontentsline{toc}{section}{Appendix}
+\addcontentsline{toc}{section}{References} %damit in Inhaltsverzeichnis
+\printbibliography[title=References]
+
+
+% Abbildungsverzeichnis
+%\addcontentsline{toc}{section}{\listfigurename} \listoffigures
+%\onehalfspacing
+
+
+% evtl. Anhang
+%\newpage
+%header
+%\fancyhead[LE,RO]{}
+%\fancyhead[RE,LO]{Appendix}
+%\addcontentsline{toc}{section}{Appendix}
+%\fancyhead[L]{Appendix} %Kopfzeile links
+%\input{Appendix}
+
+\end{document}
+
+
+% Anmerkungen -------------------------------------------------------------------
+%
+% Factor of ten in uhnit conversion missing!
