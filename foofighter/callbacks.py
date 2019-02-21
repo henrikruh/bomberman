@@ -99,11 +99,11 @@ def setup(self):
     file for debugging (see https://docs.python.org/3.7/library/logging.html).
     """
     
-    print('\n########    setup    ########')
+    self.logger.debug(f'Set up neural net.')
     
     # imitialize neuralnetwork
     #self.net = Net()
-    print('load net')
+    self.logger.debug(f'Load net parameters.')
     self.net = Net()
     self.net.load_state_dict(torch.load('netparas.pt'))
     self.net.eval()
@@ -111,7 +111,7 @@ def setup(self):
     # learning parameters
     self.gamma = 0.99
     self.final_epsilon = 0.0001
-    self.initial_epsilon = 0.3
+    self.initial_epsilon = 0.2
     self.epsilon = self.initial_epsilon
     self.replay_memory_size = 10000
     self.minibatch_size = 32
@@ -122,10 +122,11 @@ def setup(self):
     
     # initialize list for memory
     self.replay_memory = []
-    self.actions = actions = ['LEFT', 'RIGHT', 'UP', 'DOWN','WAIT', 'BOMB']
+    self.actions = ['LEFT', 'RIGHT', 'UP', 'DOWN','WAIT', 'BOMB']
     
     # initial game state
     self.state = None
+    self.rounds_played = 0
     
             
 def act(self):
@@ -148,11 +149,11 @@ def act(self):
     self.state = get_state(self)
 
     output = self.net(self.state)
-    print(output.tolist())
+    #print(output.tolist())
     # epsilon greedy exploration
     random_action = random.random() <= self.epsilon
     if random_action:
-        print("Performed random action!")
+        self.logger.info(f"Performed random action!")
     action_index = [torch.randint(6, torch.Size([]), dtype=torch.int)
                     if random_action
                     else torch.argmax(output)][0]
@@ -160,7 +161,7 @@ def act(self):
     self.next_action = self.actions[action_index.tolist()]
     #self.next_action = 'BOMB'
     
-    print(self.next_action )
+    #print(self.next_action )
 
 def reward_update(self):
     """Called once per step to allow intermediate rewards based on game events.
@@ -180,17 +181,24 @@ def reward_update(self):
     reward = 1
     
     # invalid action
-    if self.events == 6:
-        reward = reward - 2
+    if 6 in self.events:
+        reward = reward - 10
     
     # coins found
-    if self.events == 11:
-        reward = reward + 10
-            
-    # get new state
-    self.new_state = get_state(self)
+    if 11 in self.events:
+        reward = reward + 100
+        self.logger.info(f'Found coin!')
+        
+    # got killed
+    if 13 in self.events:
+        reward = reward - 100
+    
+    reward = -reward
     
     # fill memory ################################
+    # get new state
+    self.new_state = get_state(self)    
+        
     # record game state, action, reward
     reward = torch.from_numpy(np.array([reward], dtype=np.float32)).unsqueeze(0)
     action = torch.tensor([[float(np.where([self.next_action == i for i in self.actions])[0][0])]])
@@ -241,9 +249,8 @@ def reward_update(self):
     # set state to new state
     self.state = self.new_state
     
-    print('A')
     # perform next action
-    act(self)
+    #act(self)
 
 def end_of_episode(self):
     """Called at the end of each game to hand out final rewards and do training.
@@ -254,6 +261,11 @@ def end_of_episode(self):
     """
     self.logger.debug(f'Encountered {len(self.events)} game event(s) in final step')
 
-    torch.save(self.net.state_dict(), 'netparas.pt')
+    reward_update(self)
+
+    self.rounds_played = self.rounds_played + 1
+        
+    if self.rounds_played == s.n_rounds:
+        torch.save(self.net.state_dict(), 'netparas.pt')
+        self.logger.info(f'saved net')
     
-    print('saved file')
