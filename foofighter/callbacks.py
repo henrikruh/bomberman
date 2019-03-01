@@ -1,5 +1,6 @@
 
 import numpy as np
+import matplotlib.pylab as plt
 from random import shuffle
 from time import time, sleep
 from collections import deque
@@ -48,7 +49,7 @@ def get_state(self):
     #print(agents_map)
 
     coins_map = np.zeros([s.cols,s.rows])
-    coins_map[coins_x,coins_y]=1
+    #coins_map[coins_x,coins_y]=1     ##disable coins##
     coins_map = coins_map[1:s.cols-1,1:s.rows-1]     
     
     #print('coins')
@@ -102,17 +103,17 @@ def setup(self):
     self.logger.debug(f'Set up neural net.')
     
     # imitialize neuralnetwork
-    #self.net = Net()
     self.logger.debug(f'Load net parameters.')
     self.net = Net()
     self.net.load_state_dict(torch.load('netparas.pt'))
     self.net.eval()
     
     # learning parameters
-    self.gamma = 0.99
-    self.final_epsilon = 0.0001
-    self.initial_epsilon = 0.2
+    self.gamma = 0.5
+    self.final_epsilon = 0.05
+    self.initial_epsilon = 1
     self.epsilon = self.initial_epsilon
+    self.epsilon_decay = 0.99
     self.replay_memory_size = 10000
     self.minibatch_size = 32
     
@@ -128,7 +129,13 @@ def setup(self):
     self.state = None
     self.rounds_played = 0
     
-            
+    if torch.cuda.is_available(): 
+        print('Cuda is avaible.')
+        self.net.cuda()
+    else:
+        print('Cuda is not avaible.')
+        
+        
 def act(self):
     """Called each game step to determine the agent's next action.
 
@@ -147,13 +154,17 @@ def act(self):
 
     # get game state in first round
     self.state = get_state(self)
-
+    
+    if torch.cuda.is_available(): 
+        self.state = self.state.cuda()
+        
     output = self.net(self.state)
     #print(output.tolist())
+    
     # epsilon greedy exploration
     random_action = random.random() <= self.epsilon
     if random_action:
-        self.logger.info(f"Performed random action!")
+        self.logger.info(f"Chose random action!")
     action_index = [torch.randint(6, torch.Size([]), dtype=torch.int)
                     if random_action
                     else torch.argmax(output)][0]
@@ -174,83 +185,118 @@ def reward_update(self):
     """
 
     self.logger.debug(f'Encountered {len(self.events)} game event(s)')
-   
-    # give rewards ###############################
+    self.logger.debug(f'Encountered {self.events} game event(s)')  
     
-    # survived round
-    reward = 1
-    
-    # invalid action
-    if 6 in self.events:
-        reward = reward - 10
-    
-    # coins found
-    if 11 in self.events:
-        reward = reward + 100
-        self.logger.info(f'Found coin!')
+    if self.game_state['step'] != 1:
         
-    # got killed
-    if 13 in self.events:
-        reward = reward - 100
-    
-    reward = -reward
-    
-    # fill memory ################################
-    # get new state
-    self.new_state = get_state(self)    
+        # give rewards ###############################
         
-    # record game state, action, reward
-    reward = torch.from_numpy(np.array([reward], dtype=np.float32)).unsqueeze(0)
-    action = torch.tensor([[float(np.where([self.next_action == i for i in self.actions])[0][0])]])
-    terminal=False
-    if self.events in [14,16]:
-        terminal = True
-    self.replay_memory.append((self.state, action, reward, self.new_state,terminal))        
-
-    # if replay memory is full, remove the oldest transition
-    if len(self.replay_memory) > self.replay_memory_size:
-        self.replay_memory.pop(0)
+        # survived round
+        reward = 1
+        
+        # invalid action
+        if 6 in self.events:
+            reward = reward - 5
             
-    # learning ###################################
-    # sample random minibatch
-    minibatch = random.sample(self.replay_memory, min(len(self.replay_memory), self.minibatch_size))
+        # bomb dropped
+        if 7 in self.events:
+            reward = reward - 100 
+            
+        # wait
+        if 4 in self.events:
+            reward = reward - 10
+
+        '''                
+        # move up
+        if 2 in self.events:
+            self.logger.debug(f'Moved Up: reward -100')
+            reward = reward - 100
     
-
-    # unpack minibatch
-    state_batch = torch.cat(tuple(d[0] for d in minibatch))
-    action_batch = torch.cat(tuple(d[1] for d in minibatch))
-    reward_batch = torch.cat(tuple(d[2] for d in minibatch))
-    state_1_batch = torch.cat(tuple(d[3] for d in minibatch))
     
+        # coins found
+        if 11 in self.events:
+            reward = reward + 100
+            self.logger.info(f'Found coin!')
+            
+        # got killed
+        if 13 in self.events:
+            reward = reward - 100
+        '''
+        #reward = -reward
+     
+        self.logger.debug(f'Reward {reward}')  
     
-    # get output for the next state
-    output_1_batch = self.net(state_1_batch)
+        # fill memory ################################
+        # get new state
+        self.new_state = get_state(self)    
+            
+        # record game state, action, reward
+        reward = torch.from_numpy(np.array([reward], dtype=np.float32)).unsqueeze(0)
+        action_index = torch.tensor(float(np.where([self.next_action == i for i in self.actions])[0][0]), dtype=torch.int)
+        action = torch.zeros([6], dtype=torch.float32)
+       
+        if torch.cuda.is_available():  # put on GPU if CUDA is available
+            action = action.cuda()        
+        if torch.cuda.is_available():  # put on GPU if CUDA is available
+            action_index = action_index.cuda()
+        
+        action[action_index] = 1
+        action = action.unsqueeze(0)
+
+        terminal=False
+        if self.game_state['step']==s.max_steps:
+            terminal = True
+        self.replay_memory.append((self.state, action, reward, self.new_state,terminal))        
     
-    # set y_j to r_j for terminal state, otherwise to r_j + gamma*max(Q)
-    y_batch = torch.cat(tuple(reward_batch[i] if minibatch[i][4]
-                              else reward_batch[i] + self.gamma * torch.max(output_1_batch[i])
-                              for i in range(len(minibatch))))
-    # extract Q-value
-    q_value = torch.sum(self.net(state_batch) * action_batch, dim=1)
-
-    # PyTorch accumulates gradients by default, so they need to be reset in each pass
-    self.optimizer.zero_grad()
-
-    # returns a new Tensor, detached from the current graph, the result will never require gradient
-    y_batch = y_batch.detach()
-
-    # calculate loss
-    loss = self.criterion(q_value, y_batch)
-
-    # do backward pass
-    loss.backward()
-    self.optimizer.step()
-
-    # set state to new state
-    self.state = self.new_state
+        # if replay memory is full, remove the oldest transition
+        if len(self.replay_memory) > self.replay_memory_size:
+            self.replay_memory.pop(0)
+                
+        # learning ###################################
+        # sample random minibatch
+        minibatch = random.sample(self.replay_memory, min(len(self.replay_memory), self.minibatch_size))
+        
     
-    # perform next action
-    #act(self)
+        # unpack minibatch
+        state_batch = torch.cat(tuple(d[0] for d in minibatch))
+        action_batch = torch.cat(tuple(d[1] for d in minibatch))
+        reward_batch = torch.cat(tuple(d[2] for d in minibatch))
+        state_1_batch = torch.cat(tuple(d[3] for d in minibatch))
+ 
+        if torch.cuda.is_available():  # put on GPU if CUDA is available
+            state_batch = state_batch.cuda()
+            action_batch = action_batch.cuda()
+            reward_batch = reward_batch.cuda()
+            state_1_batch = state_1_batch.cuda()       
+        
+        # get output for the next state
+        output_1_batch = self.net(state_1_batch)
+        
+        # set y_j to r_j for terminal state, otherwise to r_j + gamma*max(Q)
+        y_batch = torch.cat(tuple(reward_batch[i] if minibatch[i][4]
+                                  else reward_batch[i] + self.gamma * torch.max(output_1_batch[i])
+                                  for i in range(len(minibatch))))
+        # extract Q-value
+        q_value = torch.sum(self.net(state_batch) * action_batch, dim=1)
+    
+        # PyTorch accumulates gradients by default, so they need to be reset in each pass
+        self.optimizer.zero_grad()
+    
+        # returns a new Tensor, detached from the current graph, the result will never require gradient
+        y_batch = y_batch.detach()
+    
+        # calculate loss
+        loss = self.criterion(q_value, y_batch)
+    
+        # do backward pass
+        loss.backward()
+        self.optimizer.step()
+    
+        # set state to new state
+        self.state = self.new_state
+        
+        # perform next action
+        #act(self)
 
 def end_of_episode(self):
     """Called at the end of each game to hand out final rewards and do training.
@@ -260,12 +306,26 @@ def end_of_episode(self):
     final step. You should place your actual learning code in this method.
     """
     self.logger.debug(f'Encountered {len(self.events)} game event(s) in final step')
-
-    reward_update(self)
-
+    
+    # update epsilon
+    self.epsilon = max(self.final_epsilon, self.epsilon*self.epsilon_decay)
+    
     self.rounds_played = self.rounds_played + 1
-        
-    if self.rounds_played == s.n_rounds:
+    
+    if self.rounds_played%10 == 0:
+        print(self.rounds_played)
+    
+    if self.rounds_played%100 == 0:
         torch.save(self.net.state_dict(), 'netparas.pt')
         self.logger.info(f'saved net')
-    
+
+    if self.rounds_played == s.n_rounds:  
+        print('last round')
+        #after last round
+        rews = [r[0] for r in torch.cat(tuple(d[2] for d in self.replay_memory)).tolist()]
+        
+        # plot reward
+        plt.figure()
+        plt.plot(range(len(self.replay_memory)),rews)
+        plt.show()
+        #plt.savefig('rewards.png')
