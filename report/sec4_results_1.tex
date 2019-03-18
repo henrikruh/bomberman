@@ -1,0 +1,41 @@
+\section{Results}
+%\thispagestyle{headings}
+
+\subsection{learning scheme}
+
+\begin{itemize}
+	\item phase 1: no coins, no crates, no enemies
+		\begin{itemize}
+			\item learn by reward to perform/ not perform a single action 
+			\item learn to make a valid step (up, down, left, right) for the first action independent of the starting position
+			\item learn to make further non-invalid actions 
+		\end{itemize}
+	\item coins, no crates, no enemies
+		\begin{itemize}
+			\item reward selecting coins
+			\item reward selecting coins in short time
+		\end{itemize}
+	\item phase 2: coins, crates, no enemies
+		\begin{itemize}
+			\item learn to make valid actions despite crates
+			\item reward destroying crates (without dying)
+			\item learn destroying crates to select coins
+		\end{itemize}
+	\item phase 3: coins, crates, enemies
+		\begin{itemize}
+			\item learn to avoid getting killed
+			\item learn to kill opponents
+			\item world dominance
+		\end{itemize}
+\end{itemize}
+
+
+
+\subsection{Phase 1}
+
+effect of reward:
+empty map, no enemies, only coins:
+rewarding bombs -> after 100 training round, agent spams bombs 
+penalizing bombs -> after 100 training round, agent goes always to the left 
+penalizing invalid actions -> after 100 training round, agent goes always to the left 
+-> after 1000 training round, agent goes always to UP
