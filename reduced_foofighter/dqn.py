@@ -21,12 +21,11 @@ class shallowQN(nn.Module):
     def __init__(self):
         super(shallowQN, self).__init__()
         self.decision = nn.Sequential(
-            nn.Linear(12, 10),
+            nn.Linear(6, 10),
             nn.LeakyReLU(inplace=True),
             nn.Linear(10, 10),
             nn.LeakyReLU(inplace=True),
-            nn.Linear(10, 6),
-            nn.LeakyReLU(inplace=True)
+            nn.Linear(10, 6)
         )
 
     def forward(self, x):

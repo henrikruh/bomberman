@@ -39,3 +39,10 @@ rewarding bombs -> after 100 training round, agent spams bombs
 penalizing bombs -> after 100 training round, agent goes always to the left 
 penalizing invalid actions -> after 100 training round, agent goes always to the left 
 -> after 1000 training round, agent goes always to UP
+
+
+
+shallow net
+- simplify
+- start with one layer
+- no leaky relu before return -> negative input goes close to zero (example: bomb, qvalue = -99)

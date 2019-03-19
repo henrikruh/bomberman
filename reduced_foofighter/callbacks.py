@@ -15,69 +15,37 @@ import torch.nn.functional as F
 import random
 
 from .dqn import shallowQN
-from .tensorboard import Tensorboard
+#from .tensorboard import Tensorboard
 
 def get_state(self):
     
-    # Gather information about the game state
+    # get arena 
     arena = self.game_state['arena']
-    #print('arena')
-    #print(arena)
+
+    # get agent position
     x, y, _, bombs_left = self.game_state['self']
-    bombs = self.game_state['bombs']
-    bomb_xys = [(x,y) for (x,y,t) in bombs]
-    bombs = self.game_state['bombs']
-    others = [(x,y) for (x,y,n,b) in self.game_state['others']]
-    others_x = [x for (x,y,n,b) in self.game_state['others']]
-    others_y = [y for (x,y,n,b) in self.game_state['others']]
-    coins = self.game_state['coins']
-    coins_x = [x for (x,y) in self.game_state['coins']]
-    coins_y = [y for (x,y) in self.game_state['coins']]
-    bomb_map = np.ones([s.cols,s.rows]) * 5
-    for xb,yb,t in bombs:
-        for (i,j) in [(xb+h, yb) for h in range(-3,4)] + [(xb, yb+h) for h in range(-3,4)]:
-            if (0 < i < bomb_map.shape[0]) and (0 < j < bomb_map.shape[1]):
-                bomb_map[i,j] = min(bomb_map[i,j], t)
-    bomb_map = bomb_map
-    
-    #print('bombs')
-    #print(bomb_map)
 
-    agents_map = np.zeros([s.cols,s.rows])
-    agents_map[x,y]=1
-    agents_map[others_x,others_y]=-1
-    agents_map = agents_map
-    
-    #print('agents')
-    #print(agents_map)
-
-    coins_map = np.zeros([s.cols,s.rows])
-    #coins_map[coins_x,coins_y]=1     ##disable coins##
-    coins_map = coins_map    
-    
-    #print('coins')
-    #print(coins_map)
-    
-    
-    joint_map = self.game_state['arena']
-    joint_map[x,y]=2
-    joint_map[others_x,others_y]=3
-    joint_map[coins_x,coins_y]=4
-    joint_map = joint_map
-    
-    #print('joint_map')
-    #print(joint_map)
-    
-    # concatenate state
-    #return torch.tensor([[arena,bomb_map,agents_map,coins_map]]).float()
-    
     # slice map around agent
     neighbours_x = [x+1,x-1,x,x]
     neighbours_y = [y,y,y-1,y+1]
     neighbours = [arena[neighbours_x,neighbours_y]]
     neighbours = np.array([n==0 for n in neighbours]).astype(int)[0]  
     
-    return torch.tensor([[neighbours]]).float()
+    # get position of nearest coin relative to agent
+    coins_dist = [((xc-x)**2+(yc-y)**2)**0.5 for (xc,yc) in self.game_state['coins']]
+    nearest_coin_xy = [[xc-x,yc-y] for (xc,yc) in self.game_state['coins']][np.argmin(coins_dist)]
+
+    # get position of two nearest bombs relative to agent
+    bombs = self.game_state['bombs']
+    bombs = [(1,2,3),(4,5,6)]
+    bombs_dist = [((xb-x)**2+(yb-y)**2)**0.5 for (xb,yb,tb) in bombs]
+    nearest_bombs_xyt = [[xb-x,yb-y,tb] for (xb,yb,tb) in bombs][np.argsort(bombs_dist)[:2]]
+    print(nearest_bombs_xyt)
+    
+    
+    input_paras = np.hstack([neighbours,nearest_coin_xy])
+    
+    return torch.tensor([input_paras]).float()
     
 def setup(self):
     """Called once before a set of games to initialize data structures etc.
@@ -94,25 +62,33 @@ def setup(self):
     # imitialize neuralnetwork
     self.logger.debug(f'Load net parameters.')
     self.net = shallowQN()
-    self.net.load_state_dict(torch.load('netparas.pt'))
-    self.net.eval()
     
+    try:
+        self.net.load_state_dict(torch.load('netparas.pt'))
+        self.net.eval()
+        print('Reloaded net parameters.')
+    except:
+        print('Could not reload net parameeters.')
+        
     # learning parameters
     self.gamma = 0
-    self.final_epsilon = 0.01
+    self.final_epsilon = 0.02
     self.initial_epsilon = 1
     self.epsilon = self.initial_epsilon
-    self.epsilon_decay = 0.9
-    self.replay_memory_size = 10000
+    self.epsilon_decay = 0.99
+    self.replay_memory_size = 1000
     self.minibatch_size = 32
     
     # optimizer and loss criterion
-    self.optimizer = optim.Adam(self.net.parameters(), lr=1e-6)
+    self.optimizer = optim.Adam(self.net.parameters(), lr=1e-1)
     self.criterion = nn.MSELoss()
     
     # initialize list for memory
     self.replay_memory = []
     self.losses = []
+    self.mean_losses = []
+    self.rews = []
+    self.mean_rews = []    
     self.q_values = []
     self.y = []
     self.actions = ['LEFT', 'RIGHT', 'UP', 'DOWN','WAIT', 'BOMB']
@@ -221,15 +197,14 @@ def reward_update(self):
         # fill memory ################################
         # get new state
         self.new_state = get_state(self)    
-            
+        
         # record game state, action, reward
         reward = torch.from_numpy(np.array([reward], dtype=np.float32)).unsqueeze(0)
         action_index = torch.tensor(float(np.where([self.next_action == i for i in self.actions])[0][0]), dtype=torch.int)
         action = torch.zeros([6], dtype=torch.float32)
        
         if torch.cuda.is_available():  # put on GPU if CUDA is available
-            action = action.cuda()        
-        if torch.cuda.is_available():  # put on GPU if CUDA is available
+            action = action.cuda()
             action_index = action_index.cuda()
         
         action[action_index] = 1
@@ -267,30 +242,41 @@ def reward_update(self):
         y_batch = torch.cat(tuple(reward_batch[i] if minibatch[i][4]
                                   else reward_batch[i] + self.gamma * torch.max(output_1_batch[i])
                                   for i in range(len(minibatch))))
-        self.y.append(np.mean(y_batch.tolist()))
 
-        # extract Q-value
+        # compute Q-value
         q_value = torch.sum(self.net(state_batch) * action_batch, dim=1)
-        self.q_values.append(np.mean(q_value.tolist()))
+
         
         # PyTorch accumulates gradients by default, so they need to be reset in each pass
         self.optimizer.zero_grad()
     
         # returns a new Tensor, detached from the current graph, the result will never require gradient
         y_batch = y_batch.detach()
-    
+        print(q_value)
+        print(y_batch)
+        
         # calculate loss
         loss = self.criterion(q_value, y_batch)
-        self.losses.append(np.mean(loss.tolist()))
+        print(loss)
         
         # do backward pass
         loss.backward()
         self.optimizer.step()
+        print(self.net.parameters())
     
         # set state to new state
         self.state = self.new_state
     
-    
+        
+        # save parameters for evaluation
+        self.y.append(np.mean(y_batch.tolist()))
+        self.q_values.append(np.mean(q_value.tolist()))
+        self.rews.append(reward.tolist()[0][0])
+        self.mean_rews.append(np.mean(self.rews))
+        self.losses.append(np.mean(loss.tolist()))
+        self.mean_losses.append(np.mean(self.losses))
+        
+        
 def end_of_episode(self):
     """Called at the end of each game to hand out final rewards and do training.
 
@@ -313,36 +299,32 @@ def end_of_episode(self):
         self.logger.info(f'saved net')
 
     if self.rounds_played == s.n_rounds or self.rounds_played%100 == 0:  
-
         #after last round
         evaluation(self)
 
-        
-        
+
 def evaluation(self):
-    
+
     # saving location
-    loc = "agent_code\\foofighter\\logs\\"
+    loc = "agent_code\\reduced_foofighter\\logs\\"
     
     # plot reward
-    rews = [r[0] for r in torch.cat(tuple(d[2] for d in self.replay_memory)).tolist()]
-    numrange = range(len(self.replay_memory))
-    numrange2 = range(len(self.losses))
     
+    numrange = range(len(self.rews))
+    numrange2 = range(len(self.losses))
+   
     plt.figure()
-    plt.plot(numrange,rews)
+    plt.plot(numrange,self.rews)
     plt.title('reward')
-    plt.xlabel('action number')
+    plt.xlabel('transitions')
     plt.ylabel('reward')
     plt.savefig(loc+'rewards.png')  
-    
-    #plot mean reward
-    mean_rews = [np.mean(rews[:i+1]) for i in numrange]
-    
+
+    #plot mean reward    
     plt.figure()
     plt.title('mean reward')
-    plt.plot(numrange,mean_rews)
-    plt.xlabel('action number')
+    plt.plot(numrange,self.mean_rews)
+    plt.xlabel('transitions')
     plt.ylabel('mean reward')
     plt.savefig(loc+'mean_rewards.png')  
 
@@ -351,7 +333,7 @@ def evaluation(self):
     plt.plot(numrange2,self.q_values,label='model')
     plt.plot(numrange2,self.y,label='real')
     plt.title('Q value')
-    plt.xlabel('action number')
+    plt.xlabel('transitions')
     plt.ylabel('Q value')
     plt.legend()
     plt.savefig(loc+'q_value.png')  
@@ -360,16 +342,16 @@ def evaluation(self):
     plt.figure()
     plt.plot(numrange2,self.losses)
     plt.title('loss')
-    plt.xlabel('action number')
+    plt.xlabel('transitions')
     plt.ylabel('loss')
     plt.savefig(loc+'losses.png')  
 
-    #plot mean losees
-    mean_losses = [np.mean(self.losses[:i+1]) for i in numrange2]
-    
+    #plot mean losees    
     plt.figure()
-    plt.plot(numrange2,mean_losses)
+    plt.plot(numrange2,self.mean_losses)
     plt.title('mean losses')
-    plt.xlabel('action number')
+    plt.xlabel('transitions')
     plt.ylabel('mean losses')
     plt.savefig(loc+'mean_losses.png')  
+
+    plt.close('all')
